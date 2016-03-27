@@ -1,0 +1,14 @@
+{
+  "name": "TimeoutCallback",
+  "frameworks": "Arduino",
+  "keywords": "Time, timeout, callback",
+  "description": "It calls back a function, when the specified time has elapsed",
+  "url": "https://github.com/notisrac/TimeoutCallback",
+  "authors": {
+    "name": "noti"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notisrac/TimeoutCallback"
+  }
+}
