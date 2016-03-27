@@ -4,7 +4,7 @@
 
 #include <Arduino.h>
 
-// Type for the callback that has no parameters and no return values
+// Type for the callback that has one int parameter and no return values
 typedef void(*CallbackType)(int);
 
 // It calls back a function, when the specified time has elapsed
@@ -31,7 +31,7 @@ private:
 TimeoutCallback::TimeoutCallback()
 {
 	_startTime = 0;
-	_callbackFunction = nullptr;
+	_callbackFunction = NULL;
 	_timeout = 0;
 	_isRunning = false;
 	_param = 0;
@@ -45,9 +45,14 @@ TimeoutCallback::~TimeoutCallback()
 void TimeoutCallback::Update(void)
 {
 	if (!_isRunning)
-	{
+	{ // must be running
 		return;
 	}
+	if (NULL == _callbackFunction)
+	{ // cannot do a thing without a callback function
+		return;
+	}
+
 	if (millis() - _startTime >= _timeout)
 	{
 		_isRunning = false;
